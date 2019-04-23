@@ -105,5 +105,21 @@ extension BinarySearchTree {
 
 // MARK: - 遍历
 extension BinarySearchTree {
+    func traverseInOrder(process: (T) -> Void) {
+        left?.traverseInOrder(process: process)
+        process(value)
+        right?.traverseInOrder(process: process)
+    }
     
+    func traversePreOrder(process: (T) -> Void) {
+        process(value)
+        left?.traversePreOrder(process: process)
+        right?.traversePreOrder(process: process)
+    }
+    
+    func traversePostOrder(process: (T) -> Void) {
+        left?.traversePostOrder(process: process)
+        right?.traversePostOrder(process: process)
+        process(value)
+    }
 }
