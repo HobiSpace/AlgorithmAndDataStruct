@@ -123,3 +123,57 @@ extension BinarySearchTree {
         process(value)
     }
 }
+
+// MARK: - 删除
+extension BinarySearchTree {
+    func remove() -> BinarySearchTree? {
+        var replacement: BinarySearchTree?
+        if let right = self.right {
+            replacement = right.minimum()
+        } else if let left = self.left {
+            replacement = left.maximum()
+        } else {
+            replacement = nil
+        }
+        
+        replacement?.remove()
+        
+        replacement?.right = right
+        replacement?.left = left
+        right?.parent = replacement
+        left?.parent = replacement
+        reconnectParentTo(node: replacement)
+        parent = nil
+        left = nil
+        right = nil
+        return replacement
+    }
+    
+    func reconnectParentTo(node: BinarySearchTree?) {
+        if let parent = parent {
+            if isLeftChild() {
+                parent.left = node
+            } else {
+                parent.right = node
+            }
+        }
+        
+        node?.parent = parent
+    }
+    
+    func minimum() -> BinarySearchTree? {
+        var node = self
+        while let next = node.left {
+            node = next
+        }
+        return node
+    }
+    
+    func maximum() -> BinarySearchTree? {
+        var node = self
+        while let next = node.right {
+            node = next
+        }
+        return node
+    }
+}

@@ -11,6 +11,7 @@
 		8715579922677C5A0099A789 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8715579822677C5A0099A789 /* Stack.swift */; };
 		8715579C226788930099A789 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8715579B226788930099A789 /* Queue.swift */; };
 		8715579F22678E0F0099A789 /* BinarySearchTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8715579E22678E0F0099A789 /* BinarySearchTree.swift */; };
+		871557A22270C61D0099A789 /* LinkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871557A12270C61D0099A789 /* LinkList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,7 @@
 		8715579822677C5A0099A789 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		8715579B226788930099A789 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		8715579E22678E0F0099A789 /* BinarySearchTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearchTree.swift; sourceTree = "<group>"; };
+		871557A12270C61D0099A789 /* LinkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 		8715579622677C400099A789 /* DataStruct */ = {
 			isa = PBXGroup;
 			children = (
+				871557A02270B4910099A789 /* LinkList */,
 				8715579D22678DA10099A789 /* Tree */,
 				8715579A226788890099A789 /* Queue */,
 				8715579722677C4E0099A789 /* Stack */,
@@ -101,6 +104,14 @@
 				8715579E22678E0F0099A789 /* BinarySearchTree.swift */,
 			);
 			path = Tree;
+			sourceTree = "<group>";
+		};
+		871557A02270B4910099A789 /* LinkList */ = {
+			isa = PBXGroup;
+			children = (
+				871557A12270C61D0099A789 /* LinkList.swift */,
+			);
+			path = LinkList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +173,7 @@
 			files = (
 				8715579F22678E0F0099A789 /* BinarySearchTree.swift in Sources */,
 				8715579922677C5A0099A789 /* Stack.swift in Sources */,
+				871557A22270C61D0099A789 /* LinkList.swift in Sources */,
 				8715579C226788930099A789 /* Queue.swift in Sources */,
 				8715579022677C330099A789 /* main.swift in Sources */,
 			);
