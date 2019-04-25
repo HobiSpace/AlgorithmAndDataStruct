@@ -27,3 +27,10 @@ while node != nil {
     print(node?.value)
     node = node?.previous
 }
+
+list.reverse()
+node = list.head
+while node != nil {
+    print(node?.value)
+    node = node?.next
+}
