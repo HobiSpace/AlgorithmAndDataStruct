@@ -16,6 +16,10 @@ class LinkedListNode<T> {
     init(value: T) {
         self.value = value
     }
+    
+    deinit {
+        print("dealloc \(value)")
+    }
 }
 
 class LinkedList<T> {
@@ -105,16 +109,32 @@ class LinkedList<T> {
 //            head = currentNode
 //        }
         
-        var node = head
-        tail = node
-        while node != nil {
-            let next = node?.next
-            node?.next = node?.previous
-            node?.previous = next
-            if next == nil {
-                head = node
+//        var node = head
+//        tail = node
+//        while node != nil {
+//            let next = node?.next
+//            node?.next = node?.previous
+//            node?.previous = next
+//            // 避免上一个节点被释放
+//            head = node
+//            node = next
+//        }
+        
+        // 使用三个指针
+        var currentNode = head
+        var prevNode: Node?
+        tail = head
+        while currentNode != nil {
+            let nextNode = currentNode?.next
+            if nextNode == nil {
+                head = currentNode
+                currentNode?.previous = nil
             }
-            node = next
+            currentNode?.next = prevNode
+            prevNode?.previous = currentNode
+            prevNode = currentNode
+            currentNode = nextNode
         }
+        
     }
 }

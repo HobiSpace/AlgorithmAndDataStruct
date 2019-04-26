@@ -28,9 +28,19 @@ while node != nil {
     node = node?.previous
 }
 
+// 反转
 list.reverse()
+
 node = list.head
+print("顺序")
 while node != nil {
     print(node?.value)
     node = node?.next
+}
+
+print("逆序")
+node = list.tail
+while node != nil {
+    print(node?.value)
+    node = node?.previous
 }
