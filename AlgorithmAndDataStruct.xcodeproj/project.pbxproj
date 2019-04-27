@@ -12,6 +12,10 @@
 		8715579C226788930099A789 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8715579B226788930099A789 /* Queue.swift */; };
 		8715579F22678E0F0099A789 /* BinarySearchTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8715579E22678E0F0099A789 /* BinarySearchTree.swift */; };
 		871557A22270C61D0099A789 /* LinkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871557A12270C61D0099A789 /* LinkList.swift */; };
+		871557A622742CE00099A789 /* InsertSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871557A522742CE00099A789 /* InsertSort.swift */; };
+		877E6EE92274404600C02554 /* BinarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E6EE82274404600C02554 /* BinarySearch.swift */; };
+		877E6EEB2274451700C02554 /* MergeSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E6EEA2274451700C02554 /* MergeSort.swift */; };
+		877E6EED22745A2900C02554 /* BoyerMooreStringSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E6EEC22745A2900C02554 /* BoyerMooreStringSearch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +37,10 @@
 		8715579B226788930099A789 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		8715579E22678E0F0099A789 /* BinarySearchTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearchTree.swift; sourceTree = "<group>"; };
 		871557A12270C61D0099A789 /* LinkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkList.swift; sourceTree = "<group>"; };
+		871557A522742CE00099A789 /* InsertSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertSort.swift; sourceTree = "<group>"; };
+		877E6EE82274404600C02554 /* BinarySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearch.swift; sourceTree = "<group>"; };
+		877E6EEA2274451700C02554 /* MergeSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeSort.swift; sourceTree = "<group>"; };
+		877E6EEC22745A2900C02554 /* BoyerMooreStringSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoyerMooreStringSearch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +73,7 @@
 		8715578E22677C330099A789 /* AlgorithmAndDataStruct */ = {
 			isa = PBXGroup;
 			children = (
+				871557A322742CC20099A789 /* Algorithm */,
 				8715579622677C400099A789 /* DataStruct */,
 				8715578F22677C330099A789 /* main.swift */,
 			);
@@ -112,6 +121,33 @@
 				871557A12270C61D0099A789 /* LinkList.swift */,
 			);
 			path = LinkList;
+			sourceTree = "<group>";
+		};
+		871557A322742CC20099A789 /* Algorithm */ = {
+			isa = PBXGroup;
+			children = (
+				877E6EE72274403600C02554 /* Search */,
+				871557A422742CD40099A789 /* Sort */,
+			);
+			path = Algorithm;
+			sourceTree = "<group>";
+		};
+		871557A422742CD40099A789 /* Sort */ = {
+			isa = PBXGroup;
+			children = (
+				871557A522742CE00099A789 /* InsertSort.swift */,
+				877E6EEA2274451700C02554 /* MergeSort.swift */,
+			);
+			path = Sort;
+			sourceTree = "<group>";
+		};
+		877E6EE72274403600C02554 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				877E6EE82274404600C02554 /* BinarySearch.swift */,
+				877E6EEC22745A2900C02554 /* BoyerMooreStringSearch.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,8 +209,12 @@
 			files = (
 				8715579F22678E0F0099A789 /* BinarySearchTree.swift in Sources */,
 				8715579922677C5A0099A789 /* Stack.swift in Sources */,
+				877E6EEB2274451700C02554 /* MergeSort.swift in Sources */,
+				871557A622742CE00099A789 /* InsertSort.swift in Sources */,
 				871557A22270C61D0099A789 /* LinkList.swift in Sources */,
+				877E6EE92274404600C02554 /* BinarySearch.swift in Sources */,
 				8715579C226788930099A789 /* Queue.swift in Sources */,
+				877E6EED22745A2900C02554 /* BoyerMooreStringSearch.swift in Sources */,
 				8715579022677C330099A789 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,9 +340,11 @@
 		8715579422677C330099A789 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V34Y535TMS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -310,9 +352,11 @@
 		8715579522677C330099A789 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V34Y535TMS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;

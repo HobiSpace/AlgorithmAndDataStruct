@@ -44,3 +44,20 @@ while node != nil {
     print(node?.value)
     node = node?.previous
 }
+
+
+var array = [1, 3, 0, -1, 5, 5,  10, 6, 2, -10]
+//array.insertSort { (i, j) -> Bool in
+//    return i <= j
+//}
+
+let tmp = array.mergeSort { (i, j) -> Bool in
+    return i <= j
+}
+let idx = tmp.binarySearch(0)
+print(tmp)
+
+
+let s = "123123123123123"
+
+s.bmIndex(of: "23")
