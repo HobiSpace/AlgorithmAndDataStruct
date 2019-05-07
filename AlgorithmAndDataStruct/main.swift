@@ -58,6 +58,6 @@ let idx = tmp.binarySearch(0)
 print(tmp)
 
 
-let s = "123123123123123"
 
-s.bmIndex(of: "23")
+let text = "Hello, World"
+let index = text.bmIndex(of: "World")

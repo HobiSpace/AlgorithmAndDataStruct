@@ -9,60 +9,73 @@
 import Foundation
 
 extension String {
+    
+    func forceIndex(of pattern: String) -> Index? {
+        for i in indices {
+            var j = i
+            var find = true
+            for p in pattern.indices {
+                guard j != endIndex, pattern[p] == self[j] else {
+                    find = false
+                    break
+                }
+                j = index(after: j)
+            }
+            if find {
+                return i
+            }
+        }
+        return nil
+    }
+    
     func bmIndex(of pattern: String) -> Index? {
-        let patternLength = pattern.count
-
-        guard patternLength > 0, patternLength < self.count else {
+        
+        // 合法判断
+        guard pattern.count <= self.count else {
             return nil
         }
-
-        var skipTable = [Character : Int]()
-
-        for (i, c) in pattern.enumerated() {
-            skipTable[c] = patternLength - i - 1
+        
+        // 构造跳表
+        var skipTable: [Character : Int] = [:]
+        
+        for (i, c) in pattern.reversed().enumerated() {
+            guard skipTable[c] == nil else {
+                continue
+            }
+            skipTable[c] = i
         }
         
-        let p = pattern.index(before: pattern.endIndex)
-
+        // 匹配
+        let i = index(startIndex, offsetBy: pattern.count - 1)
+        
+        while i < endIndex {
+            var j = i
+            var p = index(before: pattern.endIndex)
+            var match = true
+            while j >= self.startIndex, p >= pattern.startIndex {
+                let pc = pattern[p]
+                let sc = self[j]
+                guard pc == sc else {
+                    match = false
+                    break
+                }
+                // 有可能crash
+                j = index(before: j)
+                p = index(before: p)
+            }
+            if match {
+                // 找到了
+                return j
+            } else {
+                // 跳表
+                let skipIdx = skipTable[self[j]]
+                if let skipIdx = skipIdx {
+                    j = index(j, offsetBy: skipIdx)
+                } else {
+                    j = index(j, offsetBy: pattern.count)
+                }
+            }
+        }
         return nil
-        
-        
-//        let patternLength = pattern.count
-//        guard patternLength > 0, patternLength <= self.count else { return nil }
-//
-//        var skipTable = [Character: Int]()
-//        for (i, c) in pattern.enumerated() {
-//            skipTable[c] = patternLength - i - 1
-//        }
-//
-//        let p = pattern.index(before: pattern.endIndex)
-//        let lastChar = pattern[p]
-//
-//        var i = index(startIndex, offsetBy: patternLength - 1)
-//
-//        func backwards() -> Index? {
-//            var q = p
-//            var j = i
-//            while q > pattern.startIndex {
-//                j = index(before: j)
-//                q = index(before: q)
-//                if self[j] != pattern[q] { return nil }
-//            }
-//            return j
-//        }
-//
-//        while i < endIndex {
-//            let c = self[i]
-//
-//            if c == lastChar {
-//
-//                if let k = backwards() { return k }
-//
-//                i = index(after: i)
-//            } else {
-//                i = index(i, offsetBy: skipTable[c] ?? patternLength, limitedBy: endIndex) ?? endIndex
-//            }
-//        }
-//        return nil
     }
 }
