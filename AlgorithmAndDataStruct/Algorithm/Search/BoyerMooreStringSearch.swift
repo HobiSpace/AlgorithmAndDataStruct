@@ -29,7 +29,7 @@ extension String {
     }
     
     func bmIndex(of pattern: String) -> Index? {
-        
+
         // 合法判断
         guard pattern.count <= self.count else {
             return nil
@@ -38,7 +38,7 @@ extension String {
         // 构造跳表
         var skipTable: [Character : Int] = [:]
         
-        for (i, c) in pattern.reversed().enumerated() {
+        for (i, c) in pattern.enumerated() {
             guard skipTable[c] == nil else {
                 continue
             }
@@ -46,7 +46,7 @@ extension String {
         }
         
         // 匹配
-        let i = index(startIndex, offsetBy: pattern.count - 1)
+        var i = index(startIndex, offsetBy: pattern.count - 1)
         
         while i < endIndex {
             var j = i
@@ -55,24 +55,38 @@ extension String {
             while j >= self.startIndex, p >= pattern.startIndex {
                 let pc = pattern[p]
                 let sc = self[j]
+                print("compare self: \(sc) pattern: \(pc) ")
                 guard pc == sc else {
                     match = false
                     break
                 }
                 // 有可能crash
-                j = index(before: j)
-                p = index(before: p)
+                if j > self.startIndex, p > pattern.startIndex {
+                    j = index(before: j)
+                    p = index(before: p)
+                } else {
+                    // 比对完成了
+                    break
+                }
             }
             if match {
                 // 找到了
                 return j
             } else {
                 // 跳表
-                let skipIdx = skipTable[self[j]]
-                if let skipIdx = skipIdx {
-                    j = index(j, offsetBy: skipIdx)
+                var skipIdx = skipTable[self[j]]
+                if skipIdx == nil {
+                    skipIdx = -1
+                }
+                if let patternIdx = skipTable[pattern[p]] {
+                    var jump = patternIdx - skipIdx!
+                    if jump <= 0 {
+                        // 不可以向前跳
+                        jump = 1
+                    }
+                    i = index(j, offsetBy: jump)
                 } else {
-                    j = index(j, offsetBy: pattern.count)
+                    // 不可能
                 }
             }
         }
