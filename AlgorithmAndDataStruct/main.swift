@@ -61,3 +61,24 @@ print(tmp)
 
 let text = "Hello, World"
 let index = text.bmIndex(of: "World")
+
+let table = HashTable<String, String>.init()
+table.update(for: "key1", value: "value1")
+table.update(for: "key2", value: "value2")
+table.update(for: "key3", value: "value3")
+
+table.remove(for: "key2")
+
+
+var array1 = [1,2,3,4,5,6,7,8]
+for (idx, i) in array1.enumerated() {
+    if i == 3 {
+        array1.remove(at: idx)
+    }
+    
+    if i == 6 {
+        array1.remove(at: idx)
+    }
+}
+
+print(array1)
